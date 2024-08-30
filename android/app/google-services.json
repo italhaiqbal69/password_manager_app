@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "134875107158",
+    "project_id": "hybridapp-8e623",
+    "storage_bucket": "hybridapp-8e623.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134875107158:android:cc2b37b2d5f28eb1bc50f7",
+        "android_client_info": {
+          "package_name": "com.example.password_manager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOzsqFxOVljbWmbyigz_45iGxa8AJCQ20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
