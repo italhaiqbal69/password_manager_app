@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .delete();
                                       },
                                       child: Icon(
-                                        Icons.delete,
+                                        Icons.cancel,
                                         color: Colors.red,
                                       ),
                                     ),
