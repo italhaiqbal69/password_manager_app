@@ -12,32 +12,62 @@ class Movies extends StatefulWidget {
 }
 
 class _MoviesState extends State<Movies> {
+  List<ColorsModel> colorApi = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
           Expanded(
-            child: FutureBuilder<List<Data>>(
-                future: getCurrencies(),
+            child: FutureBuilder(
+                future: getColorsApi(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
-                        itemCount: snapshot.data!.length,
+                        itemCount: colorApi.length,
                         itemBuilder: (context, index) {
-                          var currency = snapshot.data![index];
-
                           return Padding(
                             padding: const EdgeInsets.symmetric(vertical: 20),
                             child: Container(
-                              height: 200,
+                              height: 400,
                               width: 200,
-                              color: Colors.green,
+                              color: Colors.white,
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
-                                  Text(currency.id.toString()),
-                                  Text(currency.name.toString()),
-                                  Text(currency.minSize.toString()),
+                                  Text('Id: ${colorApi[index].id.toString()}'),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                          'Title: ${colorApi[index].title.toString()}'),
+                                      Text(
+                                          'Name: ${colorApi[index].userName.toString()}'),
+                                    ],
+                                  ),
+                                  Text(
+                                      'Date of Creation: ${colorApi[index].dateCreated.toString()}'),
+                                  Image.network(
+                                      colorApi[index].badgeUrl.toString()),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text('Red: ${colorApi[index]
+                                          .rgb!
+                                          .red
+                                          .toString()}'),
+                                      Text('Green: ${colorApi[index]
+                                          .rgb!
+                                          .green
+                                          .toString()}'),
+                                      Text('Blue: ${colorApi[index]
+                                          .rgb!
+                                          .blue
+                                          .toString()}'),
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),
@@ -52,16 +82,18 @@ class _MoviesState extends State<Movies> {
     );
   }
 
-  Future<List<Data>> getCurrencies() async {
-    var url = 'https://api.coinbase.com/v2/currencies';
-    final response = await http.get(Uri.parse(url));
+  Future<List<ColorsModel>> getColorsApi() async {
+    var baseUrl = 'https://www.colourlovers.com/api/colors/new?format=json';
+    final response = await http.get(Uri.parse(baseUrl));
+    var data = jsonDecode(response.body.toString());
+    print(response.body);
+
     if (response.statusCode == 200) {
-      var jsonResponse = jsonDecode(response.body);
-      print(jsonResponse.toString());
-      var data = jsonResponse['data'] as List;
-      return data.map((item) => Data.fromJson(item)).toList();
-    } else {
-      throw Exception('Failed to load currencies');
+      for (Map i in data) {
+        colorApi.add(ColorsModel.fromJson(i));
+      }
+      return colorApi;
     }
+    return [];
   }
 }
