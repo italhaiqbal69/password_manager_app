@@ -34,7 +34,8 @@ class _MoviesState extends State<Movies> {
                               width: 200,
                               color: Colors.white,
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   Text('Id: ${colorApi[index].id.toString()}'),
                                   Row(
@@ -52,20 +53,15 @@ class _MoviesState extends State<Movies> {
                                   Image.network(
                                       colorApi[index].badgeUrl.toString()),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Text('Red: ${colorApi[index]
-                                          .rgb!
-                                          .red
-                                          .toString()}'),
-                                      Text('Green: ${colorApi[index]
-                                          .rgb!
-                                          .green
-                                          .toString()}'),
-                                      Text('Blue: ${colorApi[index]
-                                          .rgb!
-                                          .blue
-                                          .toString()}'),
+                                      Text(
+                                          'Red: ${colorApi[index].rgb!.red.toString()}'),
+                                      Text(
+                                          'Green: ${colorApi[index].rgb!.green.toString()}'),
+                                      Text(
+                                          'Blue: ${colorApi[index].rgb!.blue.toString()}'),
                                     ],
                                   ),
                                 ],
