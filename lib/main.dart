@@ -9,6 +9,7 @@ import 'package:password_manager/screens/login_screen.dart';
 import 'package:password_manager/screens/picScreen.dart';
 import 'firebase_options.dart';
 import 'models/api_testing.dart';
+import 'models/complex_api.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +44,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: user != null ? const ApiTesting() : const LoginScreen(),
+      home: user != null ? const NewsPaperApi() : const LoginScreen(),
     );
   }
 }
