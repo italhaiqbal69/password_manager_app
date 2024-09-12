@@ -17,6 +17,7 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+
   SignUpUser(String userEmail, String userPassword, String userName,
       String userPhone) async {
     User? currentUser = FirebaseAuth.instance.currentUser;

@@ -101,7 +101,7 @@ class _AddPasswordScreenState extends State<AddPasswordScreen> {
                 ),
                 child: Center(
                     child: Text(
-                  'Add',
+                  'Insert Data',
                   style: GoogleFonts.actor(
                       fontWeight: FontWeight.w200,
                       fontSize: 25,
